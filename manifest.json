@@ -1,0 +1,11 @@
+{
+  "name": "جوتا لخدمات السباكة والكهرباء - Gotta Plumbing & Electrical Services",
+  "short_name": "Gotta Services",
+  "description": "Bilingual plumbing and electrical services website in Riyadh",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fbfefd",
+  "theme_color": "#0f766e",
+  "dir": "auto",
+  "lang": "ar-SA"
+}
