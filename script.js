@@ -9,6 +9,9 @@ function applyLanguage(lang, persist=false){
   document.documentElement.lang=isEnglish?'en':'ar';
   document.documentElement.dir=isEnglish?'ltr':'rtl';
   document.title=isEnglish?'Gotta Plumbing & Electrical Services | Riyadh':'جوتا لخدمات السباكة والكهرباء | الرياض';
+  document.querySelectorAll('[aria-label]').forEach(el=>{
+    if(el.classList.contains('menu-btn')) el.setAttribute('aria-label',isEnglish?'Open menu':'فتح القائمة');
+  });
   if(persist){localStorage.setItem('gottaLang',lang);}
 }
 
@@ -29,11 +32,17 @@ if(langToggle){
   });
 }
 
-if(menuBtn&&mainNav){menuBtn.addEventListener('click',()=>mainNav.classList.toggle('active'));}
-document.querySelectorAll('.main-nav a,.bottom-nav a').forEach(link=>link.addEventListener('click',()=>mainNav?.classList.remove('active')));
+if(menuBtn&&mainNav){
+  menuBtn.addEventListener('click',()=>mainNav.classList.toggle('active'));
+}
 
-const revealItems=document.querySelectorAll('.reveal,.service-card,.trust-grid div,.areas-grid span,details,.contact-card,.contact-visual,.map-card');
+document.querySelectorAll('.main-nav a,.bottom-nav a').forEach(link=>{
+  link.addEventListener('click',()=>mainNav?.classList.remove('active'));
+});
+
+const revealItems=document.querySelectorAll('.reveal,.service-card,.trust-grid div,.features-grid div,.areas-grid span,details,.contact-card,.contact-visual,.map-card,.about-grid>div');
 revealItems.forEach(el=>el.classList.add('reveal'));
+
 if('IntersectionObserver' in window){
   const observer=new IntersectionObserver((entries,obs)=>{
     entries.forEach(entry=>{
